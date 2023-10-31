@@ -3,9 +3,7 @@ from pathlib import Path
 
 import segno
 
-# $ poetry run python scripts/generate_qr.py
-
-# Получите текущий путь к директории, где находится ваш скрипт
+# Получите путь к корню репозитория, где находится ваш скрипт
 PROJECT_DPATH = Path(__file__).parents[1].resolve()
 
 
@@ -20,7 +18,7 @@ def main():
     save_dpath = PROJECT_DPATH / "data" / folder_name
 
     # Создать директорию, если она не существует
-    Path(save_dpath).mkdir(exist_ok=True)
+    save_dpath.mkdir(exist_ok=True, parents=True)
 
     # Текст для 50 qr-кодов
     str_for_qr = ['Автомат', 'Роботика', 'Автоматика', 'Программа', 'Механизм',
@@ -40,7 +38,7 @@ def main():
         # Создание qr-кода и добавление его в созданную папку
         qrcode = segno.make_qr(input_str)
         file_path = save_dpath / f"{input_str}.png"
-        qrcode.save(f'{file_path}')
+        qrcode.save(str(file_path))
 
 
 if __name__ == "__main__":
