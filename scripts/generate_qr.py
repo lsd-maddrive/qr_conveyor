@@ -38,7 +38,7 @@ def main():
         # Создание qr-кода и добавление его в созданную папку
         qrcode = segno.make_qr(input_str)
         file_path = save_dpath / f"{input_str}.png"
-        qrcode.save(str(file_path))
+        qrcode.save(str(file_path), scale=10, quiet_zone="white")
 
 
 if __name__ == "__main__":
