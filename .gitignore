@@ -623,3 +623,4 @@ MigrationBackup/
 .env
 
 .idea/
+notebooks/python_basics/.ipynb_checkpoints/
