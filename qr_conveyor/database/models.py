@@ -35,3 +35,16 @@ class Cells(Base):
     def __repr__(self):
         return (f"<Cell(id={self.id}, "
                 f"location='{self.location})>")
+
+
+class Status(Base):
+    __tablename__ = 'status'
+
+    id = Column(Integer, primary_key=True)
+    status = Column(Enum('processed', 'unprocessed'))
+
+    products = relationship("Product", back_populates="status")
+
+    def __repr__(self):
+        return (f"<Status(id={self.id},"
+                f" status='{self.status}')>")
