@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -22,3 +22,16 @@ class Product(Base):
                 f"weight={self.weight}, "
                 f"size='{self.size}', "
                 f"fragile={self.fragile})>")
+
+
+class Cells(Base):
+    __tablename__ = 'cells'
+
+    id = Column(Integer, primary_key=True)
+    location = Column(Enum())
+
+    inventory = relationship("Inventory", back_populates="cell")
+
+    def __repr__(self):
+        return (f"<Cell(id={self.id}, "
+                f"location='{self.location})>")
