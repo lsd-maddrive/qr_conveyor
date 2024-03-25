@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Enum, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -48,3 +48,20 @@ class Status(Base):
     def __repr__(self):
         return (f"<Status(id={self.id},"
                 f" status='{self.status}')>")
+
+
+class Inventory(Base):
+    __tablename__ = 'inventory'
+
+    id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, ForeignKey('products.id'))
+    cell_id = Column(Integer, ForeignKey('cells.id'))
+    timestamp = Column(DateTime)
+
+    product = relationship("Product", back_populates="inventory")
+    cell = relationship("Cell", back_populates="inventory")
+
+    def __repr__(self):
+        return (f"<Inventory(product_id={self.product_id}, "
+                f"cell_id={self.cell_id}, "
+                f"timestamp='{self.timestamp}')>")
