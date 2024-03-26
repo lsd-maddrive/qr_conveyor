@@ -623,4 +623,5 @@ MigrationBackup/
 .env
 
 #Ignore /idea
-/idea
+/.idea
+/.ipynb_checkpoints
