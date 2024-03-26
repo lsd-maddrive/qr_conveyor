@@ -622,5 +622,5 @@ MigrationBackup/
 # Ignore .env file
 .env
 
-#Ignore ..idea/
-.idea/
+#Ignore /idea
+/idea

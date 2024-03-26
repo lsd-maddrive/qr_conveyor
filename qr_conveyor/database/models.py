@@ -12,9 +12,8 @@ class Product(Base):
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     name = Column(String, nullable=False)
     weight = Column(Float, nullable=False)
-    size = Column(Enum(String), nullable=False)
+    size = Column(Enum('small', 'medium', 'large', name='product_size'), nullable=False)
     fragile = Column(Boolean, nullable=False)
-
     status_id = Column(ForeignKey('status.id'), index=True)
     status = relationship("Status", back_populates="products")
 
