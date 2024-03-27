@@ -1,6 +1,5 @@
 from sqlalchemy import Boolean, Column, Enum, Float, ForeignKey, Integer, MetaData, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 
 metadata = MetaData()
 Base = declarative_base(metadata=metadata)
@@ -15,7 +14,6 @@ class Product(Base):
     size = Column(Enum('small', 'medium', 'large', name='product_size'), nullable=False)
     fragile = Column(Boolean, nullable=False)
     status_id = Column(ForeignKey('status.id'), index=True)
-    status = relationship("Status", back_populates="products")
 
     def __repr__(self):
         return (f"<Product(name='{self.name}', "
