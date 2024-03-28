@@ -622,5 +622,6 @@ MigrationBackup/
 # Ignore .env file
 .env
 
-.idea/
-notebooks/python_basics/.ipynb_checkpoints/
+#Ignore /idea
+/.idea
+/.ipynb_checkpoints
